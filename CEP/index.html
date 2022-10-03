@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+        html,
+        body {  
+            font-family: 'Open Sans', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            word-wrap: break-word;
+            background-color: #031927;
+            color: #C8E0F4;
+        }
+
+        main {
+            width: 90rem;
+            margin: 2rem auto;
+        }
+
+        input,
+        button {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            text-align: right;
+            padding: 0.5rem;
+            border-radius: 15px;
+        }
+
+        input{
+            width: 4rem;
+            background-color: rgb(235, 235, 235);
+        }
+
+        button {
+            background-color: #C8E0F4;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #508AA8;
+        }
+
+        span {
+            color: #BA1200;
+            font-weight: bold;
+            line-height: 1.5rem;
+        }
+
+        #resposta {
+            padding-left: 0.5rem;
+            background-color:#508AA8;
+            width: 60rem;
+            height: 30rem;
+        }
+
+        #resposta p {
+            color: #bee0f5;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function imprime(objeto) {
+            var mensagem = `
+            <br>
+            <span class='campo'>cep</span>: ${objeto.cep}
+            <br>
+            <span class='campo'>logradouro</span>: ${objeto.logradouro}
+            <br>
+            <span class='campo'>complemento</span>: ${objeto.complemento}
+            <br>
+            <span class='campo'>bairro</span>: ${objeto.bairro}
+            <br>
+            <span class='campo'>localidade</span>: ${objeto.localidade}
+            <br>
+            <span class='campo'>uf</span>: ${objeto.uf}
+            <br>
+            <span class='campo'>ibge</span>: ${objeto.ibge}
+            <br>
+            <span class='campo'>gia</span>: ${objeto.gia}
+            <br>
+            <span class='campo'>ddd</span>: ${objeto.ddd}
+            <br>
+            <span class='campo'>siafi</span>: ${objeto.siafi}
+        <br>`
+        
+        return mensagem;
+        } 
+
+        async function getCep(cep) {
+            await fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log(json);
+                    respjson.innerHTML = imprime(json);
+                });
+        }
+    </script>
+</head>
+
+<body>
+
+    <main>
+
+        <h1>Consulta Cep</h1>
+
+        <label>Cep:
+            <input name="numero" type="text" id="numero" value="" size="10" maxlength="9"/></label>
+
+        <button onclick="getCep(numero.value)">Buscar</button>
+
+        <div id="resposta">
+            <p class="campo">Resposta:</p>
+            <p id="respjson"></p>
+        </div>
+
+</body>
+
+</html>
+
+
+
