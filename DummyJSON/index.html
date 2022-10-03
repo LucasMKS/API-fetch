@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DummyJSON</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+        html,
+        body {  
+            font-family: 'Open Sans', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            word-wrap: break-word;
+            background-color: #031927;
+            color: #C8E0F4;
+        }
+
+        main {
+            width: 90rem;
+            margin: 2rem auto;
+        }
+
+        input,
+        button {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            text-align: right;
+            padding: 0.5rem;
+            border-radius: 15px;
+        }
+
+        input{
+            width: 3rem;
+            background-color: rgb(235, 235, 235);
+        }
+
+        button {
+            background-color: #C8E0F4;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #508AA8;
+        }
+
+        span {
+            color: #BA1200;
+            font-weight: bold;
+            line-height: 1.5rem;
+        }
+
+        #resposta {
+            padding-left: 0.5rem;
+            background-color:#508AA8;
+            width: 60rem;
+            height: 30rem;
+        }
+
+        #resposta p {
+            color: #bee0f5;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function imprime(objeto) {
+            var mensagem = `
+            <br>
+            <span class='campo'>id</span>: ${objeto.id}
+            <br>
+            <span class='campo'>title</span>: ${objeto.title}
+            <br>
+            <span class='campo'>description</span>: ${objeto.description}
+            <br>
+            <span class='campo'>discountPercentage</span>: ${objeto.discountPercentage}
+            <br>
+            <span class='campo'>rating</span>: ${objeto.rating}
+            <br>
+            <span class='campo'>stock</span>: ${objeto.stock}
+            <br>
+            <span class='campo'>brand</span>: ${objeto.brand}
+            <br>
+            <span class='campo'>category</span>: ${objeto.category}
+            <br>
+            <span class='campo'>thumbnail</span>": ${objeto.thumbnail}
+            <br>
+            <span class='campo'>images</span>: ${objeto.images}
+            <br>
+            
+        }
+        <br>`
+            return mensagem;
+        }
+
+        async function getDum(id) {
+            await fetch(`https://dummyjson.com/products/${id}`)
+                .then(res => res.json())
+                .then((json) => {
+                    console.log(json);
+                    respjson.innerHTML = imprime(json);
+                });
+        }
+
+    </script>
+</head>
+
+<body>
+    <main>
+        <h1>Pesquisa</h1>
+
+        <input id="numero" type="number" min="1" max="100" value="1">
+        <button onclick="getDum(numero.value)">Buscar</button>
+
+        <div id="resposta">
+            <p class="campo">Resposta: </p>
+            <p id="respjson"></p>
+        </div>
+    </main>
+</body>
+
+</html>
