@@ -68,35 +68,39 @@
         }
     </style>
 
-    <script>
+    <script> /*relação de produtos*/
         function imprime(objeto) {
             var mensagem = `
             <br>
-            <span class='campo'>id</span>: ${objeto.id}
+            <span class='campo'>Codigo</span>: ${objeto.id}
             <br>
-            <span class='campo'>title</span>: ${objeto.title}
+            <span class='campo'>Nome</span>: ${objeto.title}
             <br>
-            <span class='campo'>description</span>: ${objeto.description}
+            <span class='campo'>Descrição</span>: ${objeto.description}
             <br>
-            <span class='campo'>discountPercentage</span>: ${objeto.discountPercentage}
+            <span class='campo'>Percentual de desconto</span>: ${objeto.discountPercentage}
             <br>
-            <span class='campo'>rating</span>: ${objeto.rating}
+            <span class='campo'>Avaliação</span>: ${objeto.rating}
             <br>
-            <span class='campo'>stock</span>: ${objeto.stock}
+            <span class='campo'>Estoque</span>: ${objeto.stock}
             <br>
-            <span class='campo'>brand</span>: ${objeto.brand}
+            <span class='campo'>Marca</span>: ${objeto.brand}
             <br>
-            <span class='campo'>category</span>: ${objeto.category}
+            <span class='campo'>Categoria</span>: ${objeto.category}
             <br>
-            <span class='campo'>thumbnail</span>": ${objeto.thumbnail}
+            <span class='campo'>Imagem menor/span>": ${objeto.thumbnail}
             <br>
-            <span class='campo'>images</span>: ${objeto.images}
+            <span class='campo'>Imagens</span>: ${objeto.images}
             <br>
             
         }
         <br>`
             return mensagem;
         }
+        /*Abaixo a query:
+        fetch('https://dummyjson.com/products/1')
+        .then(res => res.json())
+        .then(json => console.log(json))*/
 
         async function getDum(id) {
             await fetch(`https://dummyjson.com/products/${id}`)
