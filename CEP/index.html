@@ -11,7 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
         html,
-        body {  
+        body {
             font-family: 'Open Sans', sans-serif;
             font-size: 20px;
             font-weight: bold;
@@ -34,7 +34,7 @@
             border-radius: 15px;
         }
 
-        input{
+        input {
             width: 4rem;
             background-color: rgb(235, 235, 235);
         }
@@ -44,7 +44,7 @@
             cursor: pointer;
         }
 
-        button:hover{
+        button:hover {
             background-color: #508AA8;
         }
 
@@ -56,7 +56,7 @@
 
         #resposta {
             padding-left: 0.5rem;
-            background-color:#508AA8;
+            background-color: #508AA8;
             width: 60rem;
             height: 30rem;
         }
@@ -70,6 +70,7 @@
     </style>
 
     <script>
+        /*Inclusão dos campos previstos na resposta requisição, como objetos*/
         function imprime(objeto) {
             var mensagem = `
             <br>
@@ -93,10 +94,10 @@
             <br>
             <span class='campo'>siafi</span>: ${objeto.siafi}
         <br>`
-        
-        return mensagem;
-        } 
 
+            return mensagem;
+        }
+        /*fetch(incluir a query API a consultar. O ${cep} "concatena" o valor externo com a string)*/
         async function getCep(cep) {
             await fetch(`https://viacep.com.br/ws/${cep}/json/`)
                 .then((response) => response.json())
@@ -114,8 +115,10 @@
 
         <h1>Consulta Cep</h1>
 
+        <!--O codigo cep de referencia é passado como valor inical no value e posterior a ele é permitido 
+        a inclusão do codigo de interesse-->
         <label>Cep:
-            <input name="numero" type="text" id="numero" value="" size="10" maxlength="9"/></label>
+            <input name="numero" type="text" id="numero" value="" size="10" maxlength="9" /></label>
 
         <button onclick="getCep(numero.value)">Buscar</button>
 
@@ -127,6 +130,3 @@
 </body>
 
 </html>
-
-
-
