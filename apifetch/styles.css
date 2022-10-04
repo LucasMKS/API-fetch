@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+html,
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    word-wrap: break-word;
+    background-color: #445E93;
+    color: #FCECC9;
+}
+
+main {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+input,
+button {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    padding: 0.5rem;
+    border-radius: 15px;
+    border: none;
+    border:solid 2px #7EB2DD;
+}
+
+input {
+    width: 5rem;
+    margin-bottom: 0.5rem;
+    text-align: right;
+    
+}
+
+button {
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    width: 110px;
+    text-align: center;
+    background-color: white;
+}
+
+#resp {
+    padding: 0.5rem;
+    background-color: #F93943;
+    color: #FCECC9;
+    width: 50rem;
+    border-radius: 15px;
+    border: none;
+    border:solid 2px #7EB2DD;
+}
+
+.campo {
+    color: #445E93;
+    font-weight: bold;
+    font-size: 20px;
+}
+
